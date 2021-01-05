@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
-import CardItem from '../../components/Card'
+import Spinner from 'react-bootstrap/Spinner';
+import CardItem from '../../components/Card';
 import SC from './style';
-import info from '../../constants/api.json'
+
+
+import mockData from '../../utils/constants/api.json';
+
 const Landing = () => {
-  return <SC.StyledContainer fluid>
-    <Row>APIs & Services</Row>
+  const [cardData, setData] = useState([]);
+  const [loading, showLoader] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      showLoader(false);
+    }, 1000);
 
-    <Row>Access information on  how to use Forge APIs and Services</Row>
-    <SC.CardContainer >
-      {info.data.map(eachElement => <CardItem data={eachElement} />)}
-    </SC.CardContainer>
+  }, [])
+  useEffect(() => {
+    setData(mockData.data);
+  }, [loading])
+  return <>
+    {loading ? <Spinner animation="border" size="lg" role="status" /> :
+      <SC.StyledContainer fluid>
+        <Row>APIs & Services</Row>
 
+        <Row>Access information on  how to use Forge APIs and Services</Row>
+        <SC.CardContainer >
+          {cardData.map(eachElement => <CardItem data={eachElement} />)}
+        </SC.CardContainer>
+      </SC.StyledContainer>
+    }
 
-  </SC.StyledContainer>
+  </>
 }
 export default Landing;
