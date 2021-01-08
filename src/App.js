@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Landing from './pages/Landing'
 import Header from './components/Header'
-import routes from './constants/routes.json'
+import routes from './utils/constants/routes.json'
 function App() {
 
   return (

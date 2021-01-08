@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
-import breakpoint from '../../constants/breakpoints';
+import breakpoint from '../../utils/constants/breakpoints';
 
 export default {
   StyledContainer: styled(Container)`background-color:#D7DBDD;
